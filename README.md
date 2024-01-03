@@ -18,3 +18,72 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
 2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
 
 npm run dev
+
+public 下面的存放的是静态资源
+这里的静态资源 不会被编译
+
+src 下面也 assets 存放的静态资源 图片什么的
+components 下面存放的是组件文件
+
+app.vue 全局入口文件
+main.ts 全局的 ts 文件 全局样式都可以在这个里面引入 或者是全局的 API 配置
+vite-env.d.ts 主要是让 ts 认识一下 vue
+
+index.html 入口文件
+package.json 配置文件 命令
+tsconfig.json ts 配置文件
+
+每个组件 有三部分组成
+
+script 主要是逻辑 js 代码 model 里面只能使用一个 setup 语法糖
+template 写标签的 view
+style 写样式 css 的
+
+npm run dev 会去找 package.json 里面的 dev 命令
+会调用 vite 命令，但是如果我们直接使用 vite，是不好使的
+
+**vue 的模板语法**
+
+选项式 api
+
+```javascript
+export default {
+  data() {
+    return {
+      age: 18,
+    };
+  },
+  methods: {
+    xxx() {},
+  },
+};
+```
+
+setup 函数模式
+
+```javascript
+export default{
+   setup(){
+      const a=1
+      return {
+         a
+      }
+   }
+}
+
+// 这种定义的必须手动return出去
+<script setup lang="ts">
+   const a:number =1
+</script>
+
+// 这种定义不需要手动return
+```
+
+模板语法
+
+```html
+<template>
+  模板里面可以直接运算
+  <div>{{ a }}</div>
+</template>
+```
