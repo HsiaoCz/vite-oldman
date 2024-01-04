@@ -163,3 +163,82 @@ const a:string="<section style="color:red">我是一段文字xxxx</section>"
 const b:boolean=true
 </script>
 ```
+
+v-on 事件
+
+```typescript
+<template>
+  <button v-on:click="xxx"> 尽情的点击我 </button>
+</template>
+<script>
+   const xxx=(){
+      console.log("点击")
+   }
+</script>
+```
+
+可以设置成动态的
+
+```typescript
+<template>
+  <button @[event]="xxx"> 尽情的点击我 </button>
+</template>
+<script>
+   const event='click'
+   const xxx=(){
+      console.log("点击")
+   }
+</script>
+```
+还可以支持内置的修饰符
+
+
+v-bind 可以绑定元素上面的属性
+动态的绑定元素的属性
+```typescript
+<template>
+   <div v-bind:id="id">
+     演示v-bind
+   </div>
+</template>
+<script>
+   const id:string ="123"
+</script>
+```
+
+v-bind可以简写成 :
+
+v-model可以实现数据的双向绑定
+
+```typescript
+<template>
+   <input v-model="a" type="text"/>
+   <div>
+     演示v-bind
+   </div>
+</template>
+<script>
+   import {ref} from 'vue'
+   const a=ref("hello")
+</script>
+```
+
+这里需要注意的是 实现双向绑定 需要将数据定义成响应式的变量
+
+v-for 可以遍历
+
+```typescript
+<template>
+   <div :key="index" v-for="(item,index) in arr">
+     {{ index }} - {{ item }}
+     演示v-bind
+   </div>
+</template>
+<script>
+   const arr:string[]=["hello","hi","all"]
+</script>
+```
+
+v-once 里面放的值 只会渲染一次
+v-memo 只有当里面的条件不成立 才会发生改变 否则会跳过更新
+
