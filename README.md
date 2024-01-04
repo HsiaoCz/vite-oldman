@@ -87,3 +87,79 @@ export default{
   <div>{{ a }}</div>
 </template>
 ```
+
+v-text
+
+展示到div里面
+```typescript
+<template>
+  <div v-text="a">
+
+  </div>
+</template>
+<script>
+const a:string="我是一段文字xxxx"
+</script>
+```
+
+v-html 也可以展示文字 但是这种展示还支持标签
+但是不支持组件
+```typescript
+<template>
+  <div v-html="a">
+
+  </div>
+</template>
+<script>
+const a:string="<section style="color:red">我是一段文字xxxx</section>"
+</script>
+```
+
+v-if 可以判断值 值为真可以显示
+值为假不显示 原理是通过删除标签来控制其显示的
+将整个元素 变成注释节点
+```typescript
+<template>
+  <div v-if="b">
+     true
+  </div>
+</template>
+<script>
+const a:string="<section style="color:red">我是一段文字xxxx</section>"
+const b:boolean=true
+</script>
+```
+
+v-show 也可以展示 用法一样
+但是原理不同 v-show 通过控制标签的display属性来控制显示
+
+```typescript
+<template>
+  <div v-show="b">
+     true
+  </div>
+</template>
+<script>
+const a:string="<section style="color:red">我是一段文字xxxx</section>"
+const b:boolean=true
+</script>
+```
+
+v-else v-else-if
+
+```typescript
+<template>
+  <div v-if="a=='A'">
+     true
+  </div>
+  <div v-else-if="a=='C'">
+  </div>
+  <div v-else="a=='B'">
+     false
+  </div>
+</template>
+<script>
+const a:string="<section style="color:red">我是一段文字xxxx</section>"
+const b:boolean=true
+</script>
+```
